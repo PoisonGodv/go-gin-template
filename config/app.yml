@@ -1,8 +1,14 @@
 mysql:
-  dns: root:010413@tcp(127.0.0.1:3306)/test_go_sql?charset=utf8mb4&parseTime=True&loc=Local
+  dns: root:010413@tcp(127.0.0.1:3306)/ry_test?charset=utf8mb4&parseTime=True&loc=Local
 redis:
   addr: "127.0.0.1:6379"
   password: "010413"
   DB: 0
   poolSize: 30
   minIdleConn: 30
+jwt:
+  customSecret : "jiayuan!"
+
+wx-app:
+  appId: 'wx7fee31ba18658c06'
+  appSecret: '6647be9d61144957b5edae929ac729e2'

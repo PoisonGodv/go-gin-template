@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"test_wxlogin/service"
+	"test_wxlogin/service/appService"
+	jwtUtils "test_wxlogin/utils/jwt"
 )
 
 func Router() *gin.Engine {
@@ -16,6 +18,12 @@ func Router() *gin.Engine {
 		userGroup.POST("/createUser", service.CreateUser)
 		userGroup.DELETE("/deleteUser", service.DeleteUser)
 		userGroup.PUT("/updateUser", service.UpdateUser)
+	}
+	appGroup := r.Group("/appSystem")
+	{
+		appGroup.POST("/wxLogin", appService.WxLogin)
+		appGroup.GET("/test", jwtUtils.JWTAuthMiddleware(), appService.TestMiddleware)
+		appGroup.GET("/getLotteryResult", jwtUtils.JWTAuthMiddleware())
 	}
 
 	return r
